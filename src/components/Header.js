@@ -2,9 +2,10 @@ import React from 'react'
 
 class Header extends React.Component {
     render() {
+        const name='Star Wars API'
         return(
             <div>
-                <h1>Star Wars API</h1>
+                <h1>{name}</h1>
             </div>
         )
     }
