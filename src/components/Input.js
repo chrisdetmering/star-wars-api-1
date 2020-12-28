@@ -13,7 +13,9 @@ class Input extends React.Component {
                             className='form-control-row col-sm-6' 
                         />
                     </div>
-                    <button>Is this the droid youre looking for?</button>
+                    <div>
+                        <button className='btn btn-dark'>Is this the droid youre looking for?</button>
+                    </div>
                 </form>
             </div>
         )

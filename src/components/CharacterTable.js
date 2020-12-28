@@ -3,7 +3,18 @@ import React from 'react'
 class CharacterTable extends React.Component {
     render() {
         return(
-            <h2>table goes here</h2>
+            <div>
+                <table className='table'>
+                    <tr>
+                        <th>Name</th>
+                        <th>Birth Date</th>
+                        <th>Height</th>
+                        <th>Mass</th>
+                        <th>Homeworld</th>
+                        <th>Species</th>
+                    </tr>
+                </table>
+            </div>
         )
     }
 }
