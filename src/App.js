@@ -31,7 +31,7 @@ render() {
         <Header />
         <Input />
         <CharacterTable />
-        {this.state.characters.map(people => <li key={people.name}>{people.name}</li>)}
+        {this.state.characters.map(people => <li key={people.name}>{people.name} {people.height} {people.mass} {people.homeworld} {people.species} </li>)}
       </div>
     );
   }
