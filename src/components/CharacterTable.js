@@ -21,12 +21,19 @@ class CharacterTable extends React.Component {
                     </thead>
                     <tbody>
                         {this.props.characterData.map(people => 
-                        <tr>{this.props.people.name}</tr>)}
+                            <tr key={people.name}>
+                                <td key={people.name}> {people.name} </td>
+                                <td key={people.bith_year}> {people.birth_year} </td>
+                                <td key={people.height}> {people.height}cm </td>
+                                <td key={people.mass}> {people.mass}kg </td>
+                                <td key={people.homeworld}> {people.homeworld} </td>
+                                <td key={people.species}> {people.species} </td>
+                            </tr>)}
                     </tbody>
                 </table>
         )
     }
 }
-//*</table>{this.props.people.height} {this.props.people.mass} {this.props.people.homeworld} {this.props.people.species} </tr>)
+//*</table> </tr>) {people.height} {people.mass} {people.homeworld} {people.species}
 
 export default CharacterTable

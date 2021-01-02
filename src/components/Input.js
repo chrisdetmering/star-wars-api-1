@@ -14,7 +14,7 @@ class Input extends React.Component {
                         />
                     </div>
                     <div>
-                        <button className='btn btn-dark'>Are these the droids you are looking for?</button>
+                        <button className='btn btn-dark'>Are these the droids you're looking for?</button>
                     </div>
                 </form>
             </div>
