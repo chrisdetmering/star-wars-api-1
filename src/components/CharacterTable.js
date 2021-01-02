@@ -2,9 +2,9 @@ import React from 'react'
 
 
 class CharacterTable extends React.Component {
-    // constructor(props){
-    //     super(props)
-    // }
+    constructor(props){
+        super(props)
+    }
 
     render() {
         return(
@@ -20,13 +20,13 @@ class CharacterTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        </tr>
+                        {this.props.characterData.map(people => 
+                        <tr>{this.props.people.name}</tr>)}
                     </tbody>
                 </table>
         )
     }
 }
-
+//*</table>{this.props.people.height} {this.props.people.mass} {this.props.people.homeworld} {this.props.people.species} </tr>)
 
 export default CharacterTable
