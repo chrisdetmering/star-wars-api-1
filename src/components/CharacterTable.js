@@ -20,14 +20,14 @@ class CharacterTable extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.characterData.map(people => 
-                            <tr key={people.name}>
-                                <td key={people.name}> {people.name} </td>
-                                <td key={people.bith_year}> {people.birth_year} </td>
-                                <td key={people.height}> {people.height}cm </td>
-                                <td key={people.mass}> {people.mass}kg </td>
-                                <td key={people.homeworld}> {people.name} </td>
-                                <td key={people.species}> {people.species} </td>
+                        {this.props.characterData.map(data => 
+                            <tr key={data.name}>
+                                <td key={data.name}> {data.name} </td>
+                                <td key={data.bith_year}> {data.birth_year} </td>
+                                <td key={data.height}> {data.height}cm </td>
+                                <td key={data.mass}> {data.mass}kg </td>
+                                <td key={data.homeworld}> {data.name} </td>
+                                <td key={data.species}> {data.species} </td>
                             </tr>)}
                     </tbody>
                 </table>

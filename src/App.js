@@ -43,7 +43,7 @@ render() {
       <div className="App">
         <Header />
         <Input />
-        <CharacterTable characterData={this.state.characters} />
+        <CharacterTable characterData={this.state.characters, this.state.homeWorld} />
       </div>
     );
   }
