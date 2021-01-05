@@ -9,26 +9,36 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoading: false,
-      characters: []
+      isLoading: true,
+      characters: [],
+      homeWorld: []
     }
   }
 
 componentDidMount() {
-  axios.get(`https://swapi.dev/api/people/`)
-  .then(response => {
-    console.log(response.data)
-    this.setState({
-      isLoading: true,
-      characters: response.data.results})
-  })
+  let people = `https://swapi.dev/api/people/`
+  let homeWorld = 'https://swapi.dev/api/planets/'
+  const peopleRequest = axios.get(people)
+  const homeworldRequest = axios.get(homeWorld)
+  axios.all([peopleRequest, homeworldRequest])
+  .then(
+    axios.spread((...responses) => {
+      const peopleResponse = responses[0];
+      const homeWorldResponse = responses[1];
+      console.log(peopleResponse, homeWorldResponse)
+      this.setState({
+        characters: peopleResponse.data.results,
+        homeWorld: homeWorldResponse.data.results
+      })
+    })
+  )
   .catch(err => {
     console.log(err)
   })
-}
+} 
 
 render() {
-  console.log(this.state)
+  console.log(this.state.isLoading)
     return (
       <div className="App">
         <Header />
