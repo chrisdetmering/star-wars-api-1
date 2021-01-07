@@ -19,8 +19,8 @@ componentDidMount() {
   let people = `https://swapi.dev/api/people/`
   let homeWorld = 'https://swapi.dev/api/planets/'
   const peopleRequest = axios.get(people)
-  const homeworldRequest = axios.get(homeWorld)
-  axios.all([peopleRequest, homeworldRequest])
+  const homeWorldRequest = axios.get(homeWorld)
+  axios.all([peopleRequest, homeWorldRequest])
   .then(
     axios.spread((...responses) => {
       const peopleResponse = responses[0];
@@ -43,7 +43,7 @@ render() {
       <div className="App">
         <Header />
         <Input />
-        <CharacterTable characterData={this.state.characters, this.state.homeWorld} />
+        <CharacterTable characterData={this.state.characters} />
       </div>
     );
   }
