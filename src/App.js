@@ -16,9 +16,34 @@ class App extends Component {
   }
 
 async componentDidMount() {
-  const people = await axios.get(`https://swapi.dev/api/people/`)
-  console.log(people)
+  // get first ten people back
+  const peopleURL = `https://swapi.dev/api/people/`
+  const homeWorldURL = `https://swapi.dev/api/planets/`
+  const response = await axios.get(peopleURL)
+  console.log(response.data.results)
+  for(const people of response.data.results) {
+    const homeWorld = await axios.get(homeWorldURL)
+  }
+   // loop through each character
+    // make an http request for the character's homeworld
+      // set the homeworldName of the character to the response data
+  // update state
+    // set characters in state to characters variable
+
 }
+
+//async componentDidMount() {
+//  let people = `https://swapi.dev/api/people/`
+//  let homeWorld = 'https://swapi.dev/api/planets/'
+  // get first ten people back 
+//  const peopleRequest = await axios.get(people);
+  // loop through each character
+    // make an http request for the character's homeworld
+      // set the homeworldName of the character to the response data
+  // update state
+    // set characters in state to characters variable
+// } 
+
 
 // componentDidMount() {
 //   const people = `https://swapi.dev/api/people/`
@@ -43,7 +68,7 @@ async componentDidMount() {
 // } 
 
 render() {
-  console.log(this.state.isLoading)
+  console.log(this.state)
     return (
       <div className="App">
         <Header />
