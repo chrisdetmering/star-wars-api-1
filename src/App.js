@@ -25,10 +25,13 @@ async componentDidMount() {
   console.log(peopleResponse.data.results)
   console.log(speciesResponse.data.results)
 
-  for(const people of peopleResponse.data.results) {
+  for(const character of peopleResponse.data.results) {
     const homeWorldResponse = await axios.get(homeWorldURL)
-    people.homeWorldResponse = homeWorldResponse.data.results;
+    character.homeWorldResponse = homeWorldResponse.data.results;
     console.log(homeWorldResponse.data.results)
+
+
+    this.setState({characters: peopleResponse.data.results, homeWorld: homeWorldResponse.data.results })
   }
    // loop through each character
     // make an http request for the character's homeworld
@@ -38,35 +41,13 @@ async componentDidMount() {
 
 }
 
-// componentDidMount() {
-//   const people = `https://swapi.dev/api/people/`
-//   const homeWorld = 'https://swapi.dev/api/planets/'
-//   const peopleRequest = axios.get(people)
-//   const homeWorldRequest = axios.get(homeWorld)
-//   axios.all([peopleRequest, homeWorldRequest])
-//   .then(
-//     axios.spread((...responses) => {
-//       const peopleResponse = responses[0];
-//       const homeWorldResponse = responses[1];
-//       console.log(peopleResponse, homeWorldResponse)
-//       this.setState({
-//         characters: peopleResponse.data.results,
-//         homeWorld: homeWorldResponse.data.results
-//       })
-//     })
-//   )
-//   .catch(err => {
-//     console.log(err)
-//   })
-// } 
-
 render() {
   console.log(this.state)
     return (
       <div className="App">
         <Header />
         <Input />
-        <CharacterTable characterData={this.state.characters} />
+        <CharacterTable characterData={this.state.characters} homeWorldData={this.state.homeWorld} />
       </div>
     );
   }

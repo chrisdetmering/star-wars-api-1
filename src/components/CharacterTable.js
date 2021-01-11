@@ -26,7 +26,7 @@ class CharacterTable extends React.Component {
                                 <td key={data.bith_year}> {data.birth_year} </td>
                                 <td key={data.height}> {data.height}cm </td>
                                 <td key={data.mass}> {data.mass}kg </td>
-                                <td key={data.homeworld}> {data.name} </td>
+                                <td key={data.homeworld}> {data.name} </td> 
                                 <td key={data.species}> {data.species} </td>
                             </tr>)}
                     </tbody>
