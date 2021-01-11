@@ -25,21 +25,20 @@ async componentDidMount() {
   console.log(peopleResponse.data.results)
   console.log(speciesResponse.data.results)
 
+  // loop through each character
   for(const character of peopleResponse.data.results) {
+  // make an http request for the character's homeworld
     const homeWorldResponse = await axios.get(homeWorldURL)
+  // set the homeworldName of the character to the response data
     character.homeWorldResponse = homeWorldResponse.data.results;
     console.log(homeWorldResponse.data.results)
-
-
+    // update state
     this.setState({characters: peopleResponse.data.results, homeWorld: homeWorldResponse.data.results })
   }
-   // loop through each character
-    // make an http request for the character's homeworld
-      // set the homeworldName of the character to the response data
-  // update state
     // set characters in state to characters variable
 
 }
+
 
 render() {
   console.log(this.state)
