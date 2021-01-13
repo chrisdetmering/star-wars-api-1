@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       isLoading: true,
       characters: [],
-      homeWorld: []
     }
   }
 
@@ -22,20 +21,18 @@ async componentDidMount() {
   const speciesURL = `https://swapi.dev/api/species/`
   const peopleResponse = await axios.get(peopleURL)
   const speciesResponse = await axios.get(speciesURL)
-  console.log(peopleResponse.data.results)
-  console.log(speciesResponse.data.results)
 
   // loop through each character
-  for(const character of peopleResponse.data.results) {
   // make an http request for the character's homeworld
-    const homeWorldResponse = await axios.get(homeWorldURL)
   // set the homeworldName of the character to the response data
-    character.homeWorldResponse = homeWorldResponse.data.results;
+  // update state
+  // set characters in state to characters variable
+  for(const character of peopleResponse.data.results) {
+    const homeWorldResponse = await axios.get(homeWorldURL)
+    character.homeworld = homeWorldResponse.data.results;
     console.log(homeWorldResponse.data.results)
-    // update state
-    this.setState({characters: peopleResponse.data.results, homeWorld: homeWorldResponse.data.results })
+    this.setState({characters: peopleResponse.data.results})
   }
-    // set characters in state to characters variable
 
 }
 
@@ -46,7 +43,7 @@ render() {
       <div className="App">
         <Header />
         <Input />
-        <CharacterTable characterData={this.state.characters} homeWorldData={this.state.homeWorld} />
+        <CharacterTable characterData={this.state.characters}/>
       </div>
     );
   }

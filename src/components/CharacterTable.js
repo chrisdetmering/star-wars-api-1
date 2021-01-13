@@ -22,12 +22,12 @@ class CharacterTable extends React.Component {
                     <tbody>
                         {this.props.characterData.map(data => 
                             <tr key={data.name}>
-                                <td key={data.name}> {data.name} </td>
-                                <td key={data.bith_year}> {data.birth_year} </td>
-                                <td key={data.height}> {data.height}cm </td>
-                                <td key={data.mass}> {data.mass}kg </td>
-                                <td key={data.homeworld}> {data.name} </td> 
-                                <td key={data.species}> {data.species} </td>
+                                <td> {data.name} </td>
+                                <td> {data.birth_year} </td>
+                                <td> {data.height}cm </td>
+                                <td> {data.mass}kg </td>
+                                <td> {data.homeworld} </td> 
+                                <td> {data.species} </td>
                             </tr>)}
                     </tbody>
                 </table>
