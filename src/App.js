@@ -15,23 +15,25 @@ class App extends Component {
   }
 
 async componentDidMount() {
-  // get first ten people back
   const peopleURL = `https://swapi.dev/api/people/`
-  const homeWorldURL = `https://swapi.dev/api/planets/`
   const speciesURL = `https://swapi.dev/api/species/`
   const peopleResponse = await axios.get(peopleURL)
-  const speciesResponse = await axios.get(speciesURL)
-
-  // loop through each character
-  // make an http request for the character's homeworld
-  // set the homeworldName of the character to the response data
-  // update state
-  // set characters in state to characters variable
+  //const speciesResponse = await axios.get(speciesURL)
+  const characters = []
   for(const character of peopleResponse.data.results) {
+    const homeWorldURL = character.homeworld.replace('http', 'https')
     const homeWorldResponse = await axios.get(homeWorldURL)
-    character.homeworld = homeWorldResponse.data.results;
-    console.log(homeWorldResponse.data.results)
-    this.setState({characters: peopleResponse.data.results})
+    character.homeworld = homeWorldResponse.data.name;
+    //if species is greater than 0 then in if statement...
+    if (character.species.length > 0 ) {
+    const speciesURL = character.species.replace('http', 'https')
+    const speciesResponse = await axios.get(speciesURL)
+    character.species = speciesResponse.data.name;
+    } else {
+      character.species = 'Human'
+    }
+    characters.push(character)
+    this.setState({ characters })
   }
 
 }
