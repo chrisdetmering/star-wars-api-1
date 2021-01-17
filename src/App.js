@@ -11,14 +11,15 @@ class App extends Component {
     this.state = {
       isLoading: true,
       characters: [],
+      //currentPage: [],
+      //nextPage: [],
+      //previousPage: []
     }
   }
 
 async componentDidMount() {
   const peopleURL = `https://swapi.dev/api/people/`
-  //const speciesURL = `https://swapi.dev/api/species/`
   const peopleResponse = await axios.get(peopleURL)
-  //const speciesResponse = await axios.get(speciesURL)
   const characters = []
   for(const character of peopleResponse.data.results) {
     const homeWorldURL = character.homeworld.replace('http', 'https')
@@ -28,13 +29,12 @@ async componentDidMount() {
 
     character.homeworld = homeWorldResponse.data.name;
     //if species is greater than 0 then in if statement...
-    if (speciesResponse.data.length === 0) {
+    if (!speciesResponse.data.name) {
       character.species = 'Human'
     } else {
       character.species = speciesResponse.data.name;
-
     }
-
+    
     characters.push(character)
     this.setState({ characters })
   }
@@ -49,7 +49,7 @@ render() {
       <div className="App">
         <Header />
         <Input />
-        <CharacterTable characterData={this.state.characters}/>
+        <CharacterTable characterData={ this.state.characters }/>
       </div>
     );
   }
