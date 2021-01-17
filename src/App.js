@@ -16,26 +16,30 @@ class App extends Component {
 
 async componentDidMount() {
   const peopleURL = `https://swapi.dev/api/people/`
-  const speciesURL = `https://swapi.dev/api/species/`
+  //const speciesURL = `https://swapi.dev/api/species/`
   const peopleResponse = await axios.get(peopleURL)
   //const speciesResponse = await axios.get(speciesURL)
   const characters = []
   for(const character of peopleResponse.data.results) {
     const homeWorldURL = character.homeworld.replace('http', 'https')
     const homeWorldResponse = await axios.get(homeWorldURL)
+    const speciesURL = character.species
+    const speciesResponse = await axios.get(speciesURL)
+
     character.homeworld = homeWorldResponse.data.name;
     //if species is greater than 0 then in if statement...
-    if (character.species.length > 0 ) {
-    const speciesURL = character.species.replace('http', 'https')
-    const speciesResponse = await axios.get(speciesURL)
-    character.species = speciesResponse.data.name;
-    } else {
+    if (speciesResponse.data.length === 0) {
       character.species = 'Human'
+    } else {
+      character.species = speciesResponse.data.name;
+
     }
+
     characters.push(character)
     this.setState({ characters })
   }
-
+  
+  
 }
 
 
