@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header'
 import Input from './components/Input'
 import CharacterTable from './components/CharacterTable'
+import Pagination from './components/Pagination'
 import axios from 'axios';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
       //nextPage: [],
       //previousPage: []
     }
+    this.handleNextPage = this.handleNextPage.bind(this)
   }
 
 async componentDidMount() {
@@ -38,8 +40,10 @@ async componentDidMount() {
     characters.push(character)
     this.setState({ characters })
   }
+}
   
-  
+handleNextPage(pageNumber) {
+  console.log('button clicked')
 }
 
 
@@ -49,7 +53,8 @@ render() {
       <div className="App">
         <Header />
         <Input />
-        <CharacterTable characterData={ this.state.characters }/>
+        <CharacterTable characterData={this.state.characters} />
+        <Pagination handleNextPage={this.handleNextPage} />
       </div>
     );
   }
