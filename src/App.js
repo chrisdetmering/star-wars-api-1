@@ -28,7 +28,6 @@ async componentDidMount() {
     const homeWorldResponse = await axios.get(homeWorldURL)
     const speciesURL = character.species
     const speciesResponse = await axios.get(speciesURL)
-
     character.homeworld = homeWorldResponse.data.name;
     //if species is greater than 0 then in if statement...
     if (!speciesResponse.data.name) {
@@ -40,9 +39,15 @@ async componentDidMount() {
     characters.push(character)
     this.setState({ characters })
   }
+  console.log(peopleResponse.data)
 }
   
-handleNextPage(pageNumber) {
+  handleNextPage(pageNumber) {
+  //get page number link assigned to specific button # 
+  //when button is clicked, data is pulled from that specific page number.
+  //set state to current page number
+  //pass data to Pagination component.
+    
   console.log('button clicked')
 }
   
@@ -52,7 +57,7 @@ handleNextPage(pageNumber) {
 }
 
 
-render() {
+  render() {
   console.log(this.state)
     return (
       <div className="App">

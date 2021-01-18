@@ -4,18 +4,17 @@ import { Nav } from 'react-bootstrap'
 
 function Pagination(props) {
     return (
-        <nav>
-            <button className='btn btn-dark' onClick={props.handleNextPage}>1</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >2</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >3</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >4</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >5</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >6</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >7</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >8</button>
-            <button className='btn btn-dark' onClick={props.handleNextPage} >9</button>
-
-        </nav>
+        <ul className='nav'  style={{ display: 'flex', justifyContent: 'center' }}>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}} >1</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >2</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >3</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >4</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >5</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >6</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >7</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >8</button>
+            <button className='btn btn-dark' onClick={props.handleNextPage} style={{margin: 5}}  >9</button>
+        </ul>
     )
 }
 

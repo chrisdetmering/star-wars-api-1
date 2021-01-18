@@ -5,7 +5,7 @@ function Input(props) {
             <div className='inputContainer'>
                 <form>
                     <div className='form-group-col'>
-                        <label>Search:</label>
+                        <label>Search: </label>
                         <input 
                             name='characterSearch' 
                             type='text' 
