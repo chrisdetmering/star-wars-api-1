@@ -1,7 +1,6 @@
 import React from 'react'
 
-class Input extends React.Component {
-    render() {
+function Input(props) {
         return(
             <div className='inputContainer'>
                 <form>
@@ -14,13 +13,12 @@ class Input extends React.Component {
                         />
                     </div>
                     <div>
-                        <button className='btn btn-dark'>Are these the droids you're looking for?</button>
+                        <button className='btn btn-dark' onClick={props.handleInput}>Are these the droids you're looking for?</button>
                     </div>
                 </form>
             </div>
         )
     }
-}
 
 
 export default Input 

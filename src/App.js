@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import 'bootstrap/dist/css//bootstrap.min.css'
 import './App.css';
 import Header from './components/Header'
 import Input from './components/Input'
@@ -11,12 +12,11 @@ class App extends Component {
     super(props)
     this.state = {
       isLoading: true,
-      characters: [],
-      //currentPage: [],
-      //nextPage: [],
-      //previousPage: []
+      currentPage: 1,
+      characters: []
     }
     this.handleNextPage = this.handleNextPage.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
 async componentDidMount() {
@@ -45,6 +45,11 @@ async componentDidMount() {
 handleNextPage(pageNumber) {
   console.log('button clicked')
 }
+  
+  handleInput(e) {
+    e.preventDefault()
+    console.log('input hit')
+}
 
 
 render() {
@@ -52,7 +57,7 @@ render() {
     return (
       <div className="App">
         <Header />
-        <Input />
+        <Input handleInput={this.handleInput} />
         <CharacterTable characterData={this.state.characters} />
         <Pagination handleNextPage={this.handleNextPage} />
       </div>
