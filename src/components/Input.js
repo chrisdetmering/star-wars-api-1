@@ -10,10 +10,11 @@ function Input(props) {
                             name='characterSearch' 
                             type='text' 
                             className='form-control-row col-sm-6' 
+                            onChange={props.handleInput}
                         />
                     </div>
                     <div>
-                        <button className='btn btn-dark' onClick={props.handleInput}>Are these the droids you're looking for?</button>
+                        <button className='btn btn-dark'>Are these the droids you're looking for?</button>
                     </div>
                 </form>
             </div>

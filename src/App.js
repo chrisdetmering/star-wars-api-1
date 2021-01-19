@@ -83,7 +83,7 @@ async componentDidMount() {
     return (
       <div className="App">
         <Header />
-        <Input handleChange={this.handleInput} />
+        <Input handleInput={this.handleInput} />
         <CharacterTable characterData={this.state.characters} />
         <Pagination handleNextPage={this.handleNextPage} />
       </div>
