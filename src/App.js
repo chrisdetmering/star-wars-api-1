@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       isLoading: true,
       currentPage: 1,
+      //searchTerm: '',
       characters: []
     }
     this.handleNextPage = this.handleNextPage.bind(this)
@@ -23,6 +24,7 @@ async componentDidMount() {
   const peopleURL = `https://swapi.dev/api/people/`
   const peopleResponse = await axios.get(peopleURL)
   const characters = []
+
   for(const character of peopleResponse.data.results) {
     const homeWorldURL = character.homeworld.replace('http', 'https')
     const homeWorldResponse = await axios.get(homeWorldURL)
@@ -51,9 +53,28 @@ async componentDidMount() {
   console.log('button clicked')
 }
   
-  handleInput(e) {
+  async handleInput(e) {
     e.preventDefault()
-    console.log('input hit')
+    const searchUrl = await axios.get(`https://swapi.dev/api/people/?search=${e}`)
+    const characters = []
+    for (const characterSearch of searchUrl.data.results) {
+      const homeWorldURL = characterSearch.homeworld.replace('http', 'https')
+      const homeWorldResponse = await axios.get(homeWorldURL)
+      const speciesURL = characterSearch.species
+      const speciesResponse = await axios.get(speciesURL)
+        characterSearch.homeworld = homeWorldResponse.data.name;
+      
+    if (!speciesResponse.data.name) {
+      characterSearch.species = 'Human'
+    } else {
+      characterSearch.species = speciesResponse.data.name;
+    }
+    
+    characters.push(characterSearch)
+    this.setState({ characters: characterSearch.data.results })
+    }
+
+    console.log(searchUrl.data.results)
 }
 
 
@@ -62,7 +83,7 @@ async componentDidMount() {
     return (
       <div className="App">
         <Header />
-        <Input handleInput={this.handleInput} />
+        <Input handleChange={this.handleInput} />
         <CharacterTable characterData={this.state.characters} />
         <Pagination handleNextPage={this.handleNextPage} />
       </div>
