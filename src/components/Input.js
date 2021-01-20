@@ -3,14 +3,14 @@ import React from 'react'
 function Input(props) {
         return(
             <div className='inputContainer'>
-                <form>
+                <form >
                     <div className='form-group-col'>
                         <label>Search: </label>
                         <input 
                             name='characterSearch' 
                             type='text' 
-                            className='form-control-row col-sm-6' 
-                            onChange={props.handleInput}
+                            className='form-control-row col-sm-6'
+                            onChange={(search) => {props.handleInput(search.target.value)} }
                         />
                     </div>
                     <div>

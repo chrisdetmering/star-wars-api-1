@@ -16,7 +16,6 @@ class App extends Component {
       //handleInput: '',
       characters: []
     }
-    this.handleNextPage = this.handleNextPage.bind(this)
     this.handleInput = this.handleInput.bind(this)
   }
 
@@ -44,16 +43,8 @@ async componentDidMount() {
   console.log(peopleResponse.data)
 }
   
-  handleNextPage(pageNumber) {
-  //get page number link assigned to specific button # 
-  //when button is clicked, data is pulled from that specific page number.
-  //set state to current page number
-  //pass data to Pagination component.
-    
-  console.log('button clicked')
-}
-  
   async handleInput(searchTerm) {
+    //searchTerm.preventDefault()
     const searchUrl = await axios.get(`https://swapi.dev/api/people/?search=${searchTerm}`)
     // const characters = []
     // for (const characterSearch of searchUrl.data.results) {
@@ -70,7 +61,7 @@ async componentDidMount() {
     // }
     
     // characters.push(characterSearch)
-    // this.setState({ characters: characterSearch.data.results })
+    // this.setState({ characters: searchTerm })
     // }
 
     console.log(searchUrl.data.results)
