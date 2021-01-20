@@ -2,10 +2,6 @@ import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 
 class CharacterTable extends React.Component {
-    constructor(props){
-        super(props)
-    }
-
     render() {
         return (
             <div className='table-container'>

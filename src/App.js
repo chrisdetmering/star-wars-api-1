@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import * as ReactBootstrap from 'react-bootstrap'
 import './App.css';
 import Header from './components/Header'
 import Input from './components/Input'
@@ -13,7 +12,6 @@ class App extends Component {
     this.state = {
       isLoading: false,
       currentPage: 1,
-      //handleInput: '',
       characters: []
     }
     this.handleInput = this.handleInput.bind(this)
@@ -30,7 +28,6 @@ class App extends Component {
     const speciesURL = character.species
     const speciesResponse = await axios.get(speciesURL)
     character.homeworld = homeWorldResponse.data.name;
-    //if species is greater than 0 then in if statement...
     if (!speciesResponse.data.name) {
       character.species = 'Human'
     } else {
@@ -40,11 +37,9 @@ class App extends Component {
     characters.push(character)
     this.setState({ characters, isLoading: true })
   }
-  console.log(peopleResponse.data)
 }
   
   async handleInput(searchTerm) {
-    //searchTerm.preventDefault()
     const searchUrl = await axios.get(`https://swapi.dev/api/people/?search=${searchTerm}`)
     const characters = []
     for (const characterSearch of searchUrl.data.results) {
@@ -63,13 +58,10 @@ class App extends Component {
     characters.push(characterSearch)
     this.setState({ characters, isLoading: true })
     }
-
-    console.log(searchUrl.data.results)
 }
 
 
   render() {
-  console.log(this.state)
     return (
       <div className="App">
         <Header />
