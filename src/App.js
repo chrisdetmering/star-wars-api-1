@@ -46,23 +46,23 @@ async componentDidMount() {
   async handleInput(searchTerm) {
     //searchTerm.preventDefault()
     const searchUrl = await axios.get(`https://swapi.dev/api/people/?search=${searchTerm}`)
-    // const characters = []
-    // for (const characterSearch of searchUrl.data.results) {
-    //   const homeWorldURL = characterSearch.homeworld.replace('http', 'https')
-    //   const homeWorldResponse = await axios.get(homeWorldURL)
-    //   const speciesURL = characterSearch.species
-    //   const speciesResponse = await axios.get(speciesURL)
-    //     characterSearch.homeworld = homeWorldResponse.data.name;
+    const characters = []
+    for (const characterSearch of searchUrl.data.results) {
+      const homeWorldURL = characterSearch.homeworld.replace('http', 'https')
+      const homeWorldResponse = await axios.get(homeWorldURL)
+      const speciesURL = characterSearch.species
+      const speciesResponse = await axios.get(speciesURL)
+        characterSearch.homeworld = homeWorldResponse.data.name;
       
-    // if (!speciesResponse.data.name) {
-    //   characterSearch.species = 'Human'
-    // } else {
-    //   characterSearch.species = speciesResponse.data.name;
-    // }
+    if (!speciesResponse.data.name) {
+      characterSearch.species = 'Human'
+    } else {
+      characterSearch.species = speciesResponse.data.name;
+    }
     
-    // characters.push(characterSearch)
-    // this.setState({ characters: searchTerm })
-    // }
+    characters.push(characterSearch)
+    this.setState({ characters: searchTerm })
+    }
 
     console.log(searchUrl.data.results)
 }
