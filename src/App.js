@@ -25,7 +25,7 @@ class App extends Component {
   for(const character of peopleResponse.data.results) {
     const homeWorldURL = character.homeworld.replace('http', 'https')
     const homeWorldResponse = await axios.get(homeWorldURL)
-    const speciesURL = character.species
+    const speciesURL = character.species.toString().replace('http', 'https')
     const speciesResponse = await axios.get(speciesURL)
     character.homeworld = homeWorldResponse.data.name;
     if (!speciesResponse.data.name) {
@@ -45,16 +45,14 @@ class App extends Component {
     for (const characterSearch of searchUrl.data.results) {
       const homeWorldURL = characterSearch.homeworld.replace('http', 'https')
       const homeWorldResponse = await axios.get(homeWorldURL)
-      const speciesURL = characterSearch.species.replace('http', 'https')
+      const speciesURL = characterSearch.species.toString().replace('http', 'https')
       const speciesResponse = await axios.get(speciesURL)
         characterSearch.homeworld = homeWorldResponse.data.name;
-      
-    if (!speciesResponse.data.name) {
-      characterSearch.species = 'Human'
-    } else {
-      characterSearch.species = speciesResponse.data.name;
-    }
-    
+        if (!speciesResponse.data.name) {
+          characterSearch.species = 'Human'
+        } else {
+          characterSearch.species = speciesResponse.data.name;
+        }
     characters.push(characterSearch)
     this.setState({ characters, isLoading: true })
     }
