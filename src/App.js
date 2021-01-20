@@ -45,7 +45,7 @@ class App extends Component {
     for (const characterSearch of searchUrl.data.results) {
       const homeWorldURL = characterSearch.homeworld.replace('http', 'https')
       const homeWorldResponse = await axios.get(homeWorldURL)
-      const speciesURL = characterSearch.species
+      const speciesURL = characterSearch.species.replace('http', 'https')
       const speciesResponse = await axios.get(speciesURL)
         characterSearch.homeworld = homeWorldResponse.data.name;
       
