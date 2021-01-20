@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css//bootstrap.min.css'
+import * as ReactBootstrap from 'react-bootstrap'
 import './App.css';
 import Header from './components/Header'
 import Input from './components/Input'
@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoading: true,
+      isLoading: false,
       currentPage: 1,
       //handleInput: '',
       characters: []
@@ -19,7 +19,7 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this)
   }
 
-async componentDidMount() {
+  async componentDidMount() {
   const peopleURL = `https://swapi.dev/api/people/`
   const peopleResponse = await axios.get(peopleURL)
   const characters = []
@@ -38,7 +38,7 @@ async componentDidMount() {
     }
     
     characters.push(character)
-    this.setState({ characters })
+    this.setState({ characters, isLoading: true })
   }
   console.log(peopleResponse.data)
 }
@@ -61,7 +61,7 @@ async componentDidMount() {
     }
     
     characters.push(characterSearch)
-    this.setState({ characters: searchTerm })
+    this.setState({ characters, isLoading: true })
     }
 
     console.log(searchUrl.data.results)
@@ -74,8 +74,9 @@ async componentDidMount() {
       <div className="App">
         <Header />
         <Input handleInput={this.handleInput} />
-        <CharacterTable characterData={this.state.characters} />
+        <CharacterTable characterData={this.state.characters} isLoading={this.state.isLoading} />
         <Pagination handleNextPage={this.handleNextPage} />
+        
       </div>
     );
   }

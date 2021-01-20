@@ -1,5 +1,5 @@
 import React from 'react'
-
+import * as ReactBootstrap from 'react-bootstrap'
 
 class CharacterTable extends React.Component {
     constructor(props){
@@ -7,8 +7,9 @@ class CharacterTable extends React.Component {
     }
 
     render() {
-        return(
-                <table className='table'>
+        return (
+            <div>
+                {this.props.isLoading ? <table className='table'>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -30,7 +31,10 @@ class CharacterTable extends React.Component {
                                 <td> {data.species} </td>
                             </tr>)}
                     </tbody>
-                </table>
+                </table> : <ReactBootstrap.Spinner animation="border" /> }
+                
+
+            </div>
         )
     }
 }
